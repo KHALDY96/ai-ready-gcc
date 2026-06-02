@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Ready GCC — Find Out How Much Time AI Could Save Your Business</title>
+<meta name="description" content="Take the free 2-minute AI Readiness Assessment for GCC business owners. Discover where AI can reduce manual work, speed up customer response, and increase efficiency.">
+
+<!-- Social preview -->
+<meta property="og:title" content="Find Out How Much Time AI Could Save Your Business Every Week">
+<meta property="og:description" content="Free 2-minute AI Readiness Assessment for GCC business owners.">
+<meta property="og:type" content="website">
+
+<!-- Fonts: Plus Jakarta Sans (Latin) + Tajawal (Arabic-ready for later). System fallback if offline. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#0A1F3C;
+    --navy-2:#102A4C;
+    --navy-soft:#16335c;
+    --gold:#C2A24B;
+    --gold-soft:#d9bd6a;
+    --ink:#1c2734;
+    --muted:#5b6b7d;
+    --line:#e6eaf0;
+    --bg:#ffffff;
+    --bg-soft:#f6f8fb;
+    --radius:14px;
+    --shadow:0 10px 40px rgba(10,31,60,.10);
+    --shadow-sm:0 4px 18px rgba(10,31,60,.08);
+    --maxw:1080px;
+    --font:'Plus Jakarta Sans','Tajawal',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(160%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:18px;color:var(--navy);letter-spacing:-.2px}
+  .brand .mark{width:34px;height:34px;flex:0 0 34px}
+  .nav .nav-cta{
+    display:inline-block;padding:10px 18px;border-radius:999px;
+    background:var(--navy);color:#fff;font-weight:600;font-size:14px;
+    transition:transform .15s ease,background .15s ease;
+  }
+  .nav .nav-cta:hover{background:var(--navy-soft);transform:translateY(-1px)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(1200px 500px at 80% -10%, rgba(194,162,75,.14), transparent 60%),
+      linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%);
+    color:#fff;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:26px 26px;opacity:.5;pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:72px 22px 84px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;
+    color:var(--gold-soft);margin-bottom:20px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+  .hero h1{
+    font-size:clamp(30px,4.4vw,50px);line-height:1.1;font-weight:800;
+    letter-spacing:-1px;margin-bottom:20px;
+  }
+  .hero h1 .accent{color:var(--gold-soft)}
+  .hero p.sub{font-size:clamp(16px,1.7vw,19px);color:#c7d2e0;max-width:560px;margin-bottom:30px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;justify-content:center;
+    font-weight:700;font-size:16px;border:none;cursor:pointer;
+    padding:16px 28px;border-radius:999px;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+  }
+  .btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-gold:hover{background:var(--gold-soft);transform:translateY(-2px);box-shadow:0 12px 30px rgba(194,162,75,.35)}
+  .btn-arrow{transition:transform .15s ease}
+  .btn:hover .btn-arrow{transform:translateX(4px)}
+  .trustline{margin-top:22px;font-size:13.5px;color:#9fb0c4;display:flex;flex-wrap:wrap;gap:7px 16px}
+  .trustline span{display:inline-flex;align-items:center;gap:7px}
+  .trustline svg{flex:0 0 auto}
+
+  /* Hero card (mini preview) */
+  .hero-card{
+    background:#fff;border-radius:20px;padding:26px;box-shadow:var(--shadow);
+    color:var(--ink);
+  }
+  .hero-card h3{font-size:15px;color:var(--muted);font-weight:600;margin-bottom:4px}
+  .hero-card .big{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-.5px;margin-bottom:18px}
+  .hc-row{display:flex;align-items:center;gap:13px;padding:13px 0;border-top:1px solid var(--line)}
+  .hc-ico{width:38px;height:38px;border-radius:10px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;flex:0 0 38px}
+  .hc-row strong{display:block;font-size:14.5px;color:var(--ink)}
+  .hc-row small{color:var(--muted);font-size:13px}
+
+  /* ---------- Sections ---------- */
+  section{padding:74px 0}
+  .section-soft{background:var(--bg-soft)}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:12px}
+  h2.sec{font-size:clamp(24px,3vw,34px);font-weight:800;color:var(--navy);text-align:center;letter-spacing:-.6px;max-width:760px;margin:0 auto 16px}
+  p.lead{font-size:17px;color:var(--muted);text-align:center;max-width:680px;margin:0 auto}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-sm);transition:transform .15s ease,box-shadow .15s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .card .ico{width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,var(--navy),var(--navy-soft));display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .card h3{font-size:18px;color:var(--navy);margin-bottom:8px;font-weight:700}
+  .card p{font-size:15px;color:var(--muted)}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .step{text-align:center;padding:8px}
+  .step .num{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);color:var(--navy);font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;background:#fff}
+  .step h3{font-size:17px;color:var(--navy);margin-bottom:6px}
+  .step p{font-size:14.5px;color:var(--muted);max-width:280px;margin:0 auto}
+
+  /* ---------- Form ---------- */
+  .form-section{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .form-grid .pitch h2{color:#fff;text-align:left;margin:0 0 14px}
+  .form-grid .pitch p{color:#c7d2e0;font-size:16px;margin-bottom:22px}
+  .checklist{list-style:none;display:grid;gap:12px}
+  .checklist li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#dbe4ef}
+  .checklist .tick{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:rgba(194,162,75,.18);display:flex;align-items:center;justify-content:center;margin-top:2px}
+
+  .form-card{background:#fff;border-radius:18px;padding:30px;box-shadow:var(--shadow);color:var(--ink)}
+  .form-card h3{font-size:21px;color:var(--navy);font-weight:800;margin-bottom:4px}
+  .form-card .fc-sub{font-size:14.5px;color:var(--muted);margin-bottom:22px}
+  .field{margin-bottom:15px}
+  .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+  .field input,.field select{
+    width:100%;padding:13px 14px;font-size:15px;font-family:inherit;color:var(--ink);
+    border:1.5px solid var(--line);border-radius:10px;background:#fff;transition:border-color .15s ease,box-shadow .15s ease;
+  }
+  .field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(194,162,75,.15)}
+  .phone-row{display:grid;grid-template-columns:120px 1fr;gap:10px}
+  .consent{display:flex;gap:10px;align-items:flex-start;margin:6px 0 18px;font-size:13px;color:var(--muted)}
+  .consent input{margin-top:3px;width:16px;height:16px;flex:0 0 16px;accent-color:var(--gold)}
+  .form-card .btn-gold{width:100%}
+  .form-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:14px}
+  .err{font-size:12.5px;color:#c0392b;margin-top:5px;display:none}
+  .field.invalid input,.field.invalid select{border-color:#c0392b}
+  .field.invalid .err{display:block}
+
+  /* ---------- Closing ---------- */
+  .closing{background:var(--bg);text-align:center}
+  .closing h2{margin-bottom:14px}
+  .closing p{font-size:17px;color:var(--muted);max-width:600px;margin:0 auto 26px}
+
+  /* ---------- Footer ---------- */
+  footer.site{background:var(--navy);color:#aab9cc;padding:38px 0;font-size:13.5px}
+  footer.site .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+  footer.site .brand{color:#fff;font-size:16px}
+  footer.site a:hover{color:#fff}
+  .foot-links{display:flex;gap:20px}
+
+  /* CTA microcopy + value statement (hero, dark bg) */
+  .cta-micro{margin-top:13px;font-size:13.5px;color:#9fb0c4;font-weight:600;letter-spacing:.2px}
+  .value-stmt{margin-top:18px;max-width:520px;font-size:15px;color:#dbe4ef;background:rgba(255,255,255,.06);border-left:3px solid var(--gold);padding:13px 16px;border-radius:0 10px 10px 0}
+  .value-stmt strong{color:var(--gold-soft)}
+
+  /* Trust strip */
+  .trust-strip{background:#fff;border-bottom:1px solid var(--line)}
+  .trust-strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:22px}
+  .trust-item{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:600;color:var(--navy)}
+  .trust-item .ti-ico{width:38px;height:38px;border-radius:10px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;flex:0 0 38px}
+
+  /* Bottlenecks */
+  .bottlenecks{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:42px}
+  .bl{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 16px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .15s ease,box-shadow .15s ease}
+  .bl:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .bl .bl-ico{width:48px;height:48px;border-radius:12px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .bl p{font-size:14px;font-weight:600;color:var(--navy);line-height:1.35}
+  .bl-cta{text-align:center;margin-top:36px}
+
+  /* FAQ / reassurance */
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:42px}
+  .faq-item{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow-sm)}
+  .faq-item h3{font-size:16px;color:var(--navy);margin-bottom:6px;font-weight:700}
+  .faq-item p{font-size:14.5px;color:var(--muted)}
+
+  /* Field hint */
+  .hint{display:block;font-size:12px;color:var(--muted);margin-top:5px}
+
+  /* Redirect notice (Option B) */
+  .notice{display:none;background:#fff7e6;border:1px solid #e9d39a;color:#7a5c12;font-size:14px;font-weight:600;padding:12px 14px;border-radius:10px;margin-bottom:18px}
+  .notice.on{display:block}
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;gap:36px;padding:54px 22px 60px}
+    .hero-card{order:2}
+    .cards,.steps{grid-template-columns:1fr;gap:16px}
+    .form-grid{grid-template-columns:1fr;gap:32px}
+    .form-grid .pitch h2{text-align:left}
+    section{padding:54px 0}
+    .nav .nav-cta{display:none}
+    .trust-strip .wrap{grid-template-columns:1fr 1fr;gap:16px}
+    .bottlenecks{grid-template-columns:1fr 1fr;gap:12px}
+    .faq{grid-template-columns:1fr;gap:14px}
+  }
+  @media (max-width:420px){
+    .phone-row{grid-template-columns:104px 1fr}
+    .btn{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="AI Ready GCC home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="40" height="40" rx="9" fill="#0A1F3C"/>
+        <path d="M12 27L20 11L28 27" stroke="#C2A24B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.5 21H24.5" stroke="#C2A24B" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="20" cy="11" r="1.9" fill="#fff"/>
+      </svg>
+      <span>AI Ready GCC</span>
+    </a>
+    <a class="nav-cta" href="#start">Find My Opportunities</a>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span> Business Efficiency Assessment · Powered by AI</span>
+      <h1>Find Out How Much <span class="accent">Time AI</span> Could Save Your Business Every Week.</h1>
+      <p class="sub">Take the free 2-minute Business Efficiency Assessment built for GCC business owners and discover where AI can reduce manual work, speed up customer response, and free up your team's time.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#start">Find My Biggest AI Opportunities <span class="btn-arrow">→</span></a>
+      </div>
+      <p class="cta-micro">Free · 9 questions · about 2 minutes</p>
+      <p class="value-stmt">Most GCC businesses are sitting on <strong>5–15 hours</strong> of repetitive work every week that could be streamlined. The assessment shows you where yours are.</p>
+      <div class="trustline">
+        <span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Bahrain · KSA · UAE & the GCC
+        </span>
+        <span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          100% free
+        </span>
+        <span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Takes 2 minutes
+        </span>
+      </div>
+    </div>
+
+    <div class="hero-card" aria-hidden="true">
+      <h3>Your Business Efficiency Snapshot</h3>
+      <div class="big">See where you stand</div>
+      <div class="hc-row">
+        <div class="hc-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0A1F3C" stroke-width="2"/><path d="M12 7v5l3 2" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div><strong>Hours saved per week</strong><small>Where AI takes work off your team</small></div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L4 21l1.1-4A8.5 8.5 0 1 1 21 11.5z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <div><strong>Faster customer response</strong><small>Reply in seconds, even after hours</small></div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 19V9m6 10V5m6 14v-7" stroke="#0A1F3C" stroke-width="2" stroke-linecap="round"/><path d="M16 5l0 0" stroke="#C2A24B" stroke-width="2"/></svg>
+        </div>
+        <div><strong>Your score + next step</strong><small>A clear plan, no jargon</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Trust strip ===== -->
+<section class="trust-strip">
+  <div class="wrap">
+    <div class="trust-item">
+      <span class="ti-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="#C2A24B" stroke-width="2"/></svg></span>
+      Built for GCC businesses
+    </div>
+    <div class="trust-item">
+      <span class="ti-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#0A1F3C" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#C2A24B" stroke-width="2"/></svg></span>
+      Your details stay private
+    </div>
+    <div class="trust-item">
+      <span class="ti-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/><path d="M9 10h6M9 13h3" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></span>
+      Plain language, no jargon
+    </div>
+    <div class="trust-item">
+      <span class="ti-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0A1F3C" stroke-width="2"/><path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#C2A24B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      Free &amp; no obligation
+    </div>
+  </div>
+</section>
+
+<!-- ===== Common business bottlenecks ===== -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Does this sound familiar?</div>
+    <h2 class="sec">AI isn't complicated — and it isn't only for tech companies.</h2>
+    <p class="lead">For most GCC businesses, the biggest wins come from fixing everyday bottlenecks. If even one of these sounds familiar, the assessment will show you where AI can help most.</p>
+    <div class="bottlenecks">
+      <div class="bl">
+        <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L4 21l1.1-4A8.5 8.5 0 1 1 21 11.5z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <p>Slow customer response times</p>
+      </div>
+      <div class="bl">
+        <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7 4h7l4 4v12H7z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/><path d="M9 12h6M9 15h4" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <p>Repetitive administrative work</p>
+      </div>
+      <div class="bl">
+        <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 19V9m5 10V5m5 14v-8m4 8V8" stroke="#0A1F3C" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <p>Manual reporting</p>
+      </div>
+      <div class="bl">
+        <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#0A1F3C" stroke-width="2"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <p>Operational inefficiencies</p>
+      </div>
+      <div class="bl">
+        <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0A1F3C" stroke-width="2"/><path d="M12 7v5l3 2" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <p>Time-consuming internal processes</p>
+      </div>
+    </div>
+    <div class="bl-cta"><a class="btn btn-gold" href="#start">Find My Biggest AI Opportunities <span class="btn-arrow">→</span></a></div>
+  </div>
+</section>
+
+<!-- ===== What you'll discover ===== -->
+<section class="section-soft">
+  <div class="wrap">
+    <div class="kicker">What you'll discover</div>
+    <h2 class="sec">A clear picture of your biggest AI opportunities.</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#C2A24B" stroke-width="2"/><path d="M12 7v5l3 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Hours saved every week</h3>
+        <p>See where AI can take repetitive, manual work off your team's plate.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L4 21l1.1-4A8.5 8.5 0 1 1 21 11.5z" stroke="#C2A24B" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <h3>Faster customer response</h3>
+        <p>Learn how to reply to customers in seconds — even outside business hours.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 19V9m6 10V5m6 14v-7" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Your readiness score + next step</h3>
+        <p>A clear picture of where you stand today and what to do first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== How it works ===== -->
+<section>
+  <div class="wrap">
+    <div class="kicker">How it works</div>
+    <h2 class="sec">Three simple steps. About two minutes.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Take the free assessment</h3>
+        <p>Answer 9 quick questions about how your business runs today.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Get your results</h3>
+        <p>See where AI can save you time and money, with a readiness score.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Book a free consultation</h3>
+        <p>Get a tailored action plan for your business — no obligation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Lead form ===== -->
+<section class="form-section" id="start">
+  <div class="wrap">
+    <div class="form-grid">
+      <div class="pitch">
+        <h2 class="sec" style="text-align:left">Start your free Business Efficiency Assessment</h2>
+        <p>Enter your details and see your results in two minutes. Built for owners and decision-makers — no technical background needed.</p>
+        <ul class="checklist">
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 9 quick questions, about 2 minutes</li>
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> A clear readiness score for your business</li>
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> A free consultation with a tailored plan</li>
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 100% free — no software to install</li>
+        </ul>
+      </div>
+
+      <div class="form-card">
+        <div class="notice" id="notice" role="status"></div>
+        <h3>Get your results</h3>
+        <p class="fc-sub">Takes 2 minutes. Your details are kept private.</p>
+        <form id="leadForm" novalidate>
+          <div class="field" id="f-name">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Ahmed Al-Khalifa">
+            <div class="err">Please enter your name.</div>
+          </div>
+          <div class="field" id="f-email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com">
+            <div class="err">Please enter a valid email.</div>
+          </div>
+          <div class="field" id="f-phone">
+            <label for="phone">Phone (WhatsApp)</label>
+            <div class="phone-row">
+              <select id="countryCode" name="countryCode" aria-label="Country code">
+                <option value="+973" selected>🇧🇭 +973</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+965">🇰🇼 +965</option>
+                <option value="+974">🇶🇦 +974</option>
+                <option value="+968">🇴🇲 +968</option>
+              </select>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="3300 0000" inputmode="numeric">
+            </div>
+            <div class="err">Please enter your phone number.</div>
+            <small class="hint">We'll only use this to share your results. No spam.</small>
+          </div>
+          <div class="field" id="f-company">
+            <label for="company">Company name</label>
+            <input type="text" id="company" name="company" autocomplete="organization" placeholder="Your company">
+            <div class="err">Please enter your company name.</div>
+          </div>
+          <div class="field" id="f-type">
+            <label for="businessType">Business type</label>
+            <select id="businessType" name="businessType">
+              <option value="" selected disabled>Select your business type</option>
+              <option>Restaurant / Cafe</option>
+              <option>Retail</option>
+              <option>Real Estate</option>
+              <option>Healthcare</option>
+              <option>Professional Services</option>
+              <option>Manufacturing</option>
+              <option>Logistics</option>
+              <option>Education</option>
+              <option>Hospitality</option>
+              <option>Other</option>
+            </select>
+            <div class="err">Please select your business type.</div>
+          </div>
+          <div class="field" id="f-size">
+            <label for="companySize">Company size</label>
+            <select id="companySize" name="companySize">
+              <option value="" selected disabled>Number of employees</option>
+              <option>1–10</option>
+              <option>11–50</option>
+              <option>51–200</option>
+              <option>200+</option>
+            </select>
+            <div class="err">Please select your company size.</div>
+          </div>
+          <label class="consent" id="f-consent">
+            <input type="checkbox" id="consent" name="consent">
+            <span>I agree to be contacted about AI for my business.</span>
+          </label>
+          <button type="submit" class="btn btn-gold">Find My Biggest AI Opportunities <span class="btn-arrow">→</span></button>
+          <p class="form-note">Free · about 2 minutes · your details stay private.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Reassurance / FAQ ===== -->
+<section class="section-soft">
+  <div class="wrap">
+    <div class="kicker">Before you start</div>
+    <h2 class="sec">Quick answers</h2>
+    <div class="faq">
+      <div class="faq-item"><h3>Is it really free?</h3><p>Yes — both the assessment and the consultation are completely free, with no obligation.</p></div>
+      <div class="faq-item"><h3>How long does it take?</h3><p>About two minutes. It's 9 simple questions about how your business runs today.</p></div>
+      <div class="faq-item"><h3>Do I need technical knowledge?</h3><p>None at all. It's written for business owners and managers, not IT teams.</p></div>
+      <div class="faq-item"><h3>Is my information safe?</h3><p>Yes. Your details are kept private and used only to prepare and share your results.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Closing CTA ===== -->
+<section class="closing">
+  <div class="wrap">
+    <div class="kicker">Don't get left behind</div>
+    <h2 class="sec">Your competitors are already asking where AI can help.</h2>
+    <p>Find out first — it's free and takes two minutes.</p>
+    <a class="btn btn-gold" href="#start">Find My Biggest AI Opportunities <span class="btn-arrow">→</span></a>
+    <p class="form-note" style="margin-top:16px">Free · about 2 minutes · no obligation</p>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site">
+  <div class="wrap">
+    <span class="brand">AI Ready GCC</span>
+    <div class="foot-links">
+      <a href="#start">Free Assessment</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <span>© <span id="yr"></span> AI Ready GCC</span>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ===== Redirect notice (Option B: shown when sent back from assessment/result) =====
+  try {
+    var notice = sessionStorage.getItem('airg_notice');
+    if (notice){
+      var n = document.getElementById('notice');
+      n.textContent = notice;
+      n.classList.add('on');
+      sessionStorage.removeItem('airg_notice');
+    }
+  } catch(e){}
+
+  // ===== Lead capture: two-stage (partial on landing, completed in assessment) =====
+  // The landing form sends a PARTIAL lead now (so we capture people who abandon the
+  // assessment). assessment.html later updates the SAME record at completion.
+  // They are matched by a unique leadId, so no duplicate rows are created.
+  // Webhook URL comes from config.js (edit it there, once).
+  var WEBHOOK_URL = (window.AIRG_CONFIG && window.AIRG_CONFIG.WEBHOOK_URL) || "";
+
+  function makeLeadId(){
+    try { if (window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch(e){}
+    return 'lead-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,10);
+  }
+
+  // Fire-and-forget send that survives navigation to the assessment page.
+  function sendLead(payload){
+    if (!WEBHOOK_URL) return;
+    var body = JSON.stringify(payload);
+    try {
+      if (navigator.sendBeacon){
+        navigator.sendBeacon(WEBHOOK_URL, new Blob([body], {type:'application/json'}));
+        return;
+      }
+    } catch(e){}
+    try { fetch(WEBHOOK_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body:body, keepalive:true}); } catch(e){}
+  }
+
+  const form = document.getElementById('leadForm');
+
+  function setInvalid(id, bad){
+    document.getElementById(id).classList.toggle('invalid', bad);
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    const name        = document.getElementById('name').value.trim();
+    const email       = document.getElementById('email').value.trim();
+    const phone       = document.getElementById('phone').value.trim();
+    const countryCode = document.getElementById('countryCode').value;
+    const company     = document.getElementById('company').value.trim();
+    const businessType= document.getElementById('businessType').value;
+    const companySize = document.getElementById('companySize').value;
+    const consent     = document.getElementById('consent').checked;
+
+    // Validation
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    let ok = true;
+    setInvalid('f-name', !name);             ok = ok && !!name;
+    setInvalid('f-email', !emailOk);         ok = ok && emailOk;
+    setInvalid('f-phone', !phone);           ok = ok && !!phone;
+    setInvalid('f-company', !company);       ok = ok && !!company;
+    setInvalid('f-type', !businessType);     ok = ok && !!businessType;
+    setInvalid('f-size', !companySize);      ok = ok && !!companySize;
+    setInvalid('f-consent', !consent);       ok = ok && consent;
+    if(!ok){
+      const firstBad = form.querySelector('.invalid');
+      if(firstBad) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+
+    const lead = {
+      leadId: makeLeadId(),
+      stage: 'landing',
+      name, email,
+      phone: countryCode + ' ' + phone,
+      company, businessType, companySize,
+      consent,
+      source: 'landing',
+      submittedAt: new Date().toISOString()
+    };
+
+    // Save locally so the assessment can read it and update the SAME record.
+    try { sessionStorage.setItem('airg_lead', JSON.stringify(lead)); } catch(_){}
+
+    // Send the partial lead now (captures abandoners). Does not block navigation.
+    sendLead(lead);
+
+    // Continue the funnel — straight into the assessment.
+    window.location.href = 'assessment.html';
+  });
+</script>
+</body>
+</html>

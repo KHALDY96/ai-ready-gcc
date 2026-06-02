@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Efficiency Assessment — AI Ready GCC</title>
+<meta name="description" content="Answer 9 quick questions and discover where AI can save your business time and money.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1F3C;--navy-2:#102A4C;--navy-soft:#16335c;--gold:#C2A24B;--gold-soft:#d9bd6a;
+    --ink:#1c2734;--muted:#5b6b7d;--line:#e6eaf0;--bg:#ffffff;--bg-soft:#f6f8fb;
+    --radius:14px;--shadow:0 10px 40px rgba(10,31,60,.12);--shadow-sm:0 4px 18px rgba(10,31,60,.08);
+    --font:'Plus Jakarta Sans','Tajawal',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:var(--font);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+    min-height:100vh;display:flex;flex-direction:column;
+    background:
+      radial-gradient(1100px 460px at 80% -12%, rgba(194,162,75,.10), transparent 60%),
+      linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 46%, var(--bg-soft) 46%, var(--bg-soft) 100%);
+  }
+
+  /* Header */
+  header.site{padding:20px 0}
+  .nav{display:flex;align-items:center;justify-content:center;max-width:760px;margin:0 auto;padding:0 22px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:18px;color:#fff;letter-spacing:-.2px}
+  .brand .mark{width:34px;height:34px;flex:0 0 34px}
+
+  /* Card */
+  .stage{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:8px 18px 60px}
+  .card{
+    width:100%;max-width:620px;background:#fff;border-radius:20px;box-shadow:var(--shadow);
+    padding:30px 30px 26px;
+  }
+
+  /* Progress */
+  .progress-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .progress-head .step-label{font-size:13px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--gold)}
+  .progress-head .pct{font-size:13px;font-weight:600;color:var(--muted)}
+  .bar{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:26px}
+  .bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-soft));border-radius:99px;transition:width .35s ease}
+
+  /* Question */
+  .q-area{min-height:330px}
+  .q-text{font-size:clamp(20px,3vw,24px);font-weight:800;color:var(--navy);letter-spacing:-.4px;line-height:1.3;margin-bottom:22px}
+  .options{display:grid;gap:12px}
+  .opt{
+    display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;
+    border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:15px 16px;
+    font-family:inherit;font-size:15.5px;color:var(--ink);transition:border-color .15s ease,background .15s ease,transform .1s ease;
+  }
+  .opt:hover{border-color:var(--gold);background:#fffdf7}
+  .opt .tick{flex:0 0 22px;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .15s ease}
+  .opt.selected{border-color:var(--gold);background:#fffaf0}
+  .opt.selected .tick{border-color:var(--gold);background:var(--gold)}
+  .opt.selected .tick svg{opacity:1}
+  .opt .tick svg{opacity:0;transition:opacity .15s ease}
+
+  /* Fade transition */
+  .q-area.fade{opacity:0;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease}
+  .q-area.show{opacity:1;transform:translateY(0);transition:opacity .25s ease,transform .25s ease}
+
+  /* Footer nav */
+  .nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:14px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;justify-content:center;font-weight:700;font-size:15.5px;
+    font-family:inherit;border:none;cursor:pointer;padding:14px 24px;border-radius:999px;
+    transition:transform .15s ease,box-shadow .15s ease,background .15s ease,opacity .15s ease;
+  }
+  .btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-gold:hover:not(:disabled){background:var(--gold-soft);transform:translateY(-2px);box-shadow:0 12px 26px rgba(194,162,75,.32)}
+  .btn-ghost{background:transparent;color:var(--muted);padding-left:6px}
+  .btn-ghost:hover:not(:disabled){color:var(--navy)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn-arrow{transition:transform .15s ease}
+  .btn-gold:hover:not(:disabled) .btn-arrow{transform:translateX(3px)}
+
+  .reassure{text-align:center;color:#9fb0c4;font-size:13px;margin-top:18px}
+
+  /* Loading state on submit */
+  .loading{display:none;text-align:center;padding:40px 10px}
+  .loading.on{display:block}
+  .spinner{width:42px;height:42px;border:3px solid var(--line);border-top-color:var(--gold);border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loading p{color:var(--muted);font-size:15px}
+
+  @media (max-width:520px){
+    .card{padding:24px 20px 22px;border-radius:16px}
+    .q-area{min-height:300px}
+    .btn{padding:13px 18px;font-size:15px}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="index.html" aria-label="AI Ready GCC home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="40" height="40" rx="9" fill="#0A1F3C"/>
+        <path d="M12 27L20 11L28 27" stroke="#C2A24B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.5 21H24.5" stroke="#C2A24B" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="20" cy="11" r="1.9" fill="#fff"/>
+      </svg>
+      <span>AI Ready GCC</span>
+    </a>
+  </div>
+</header>
+
+<div class="stage">
+  <div class="card">
+    <!-- Question flow -->
+    <div id="quiz">
+      <div class="progress-head">
+        <span class="step-label" id="stepLabel">Question 1 of 9</span>
+        <span class="pct" id="pct">11%</span>
+      </div>
+      <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+
+      <div class="q-area show" id="qArea">
+        <div class="q-text" id="qText"></div>
+        <div class="options" id="options"></div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-ghost" id="backBtn">← Back</button>
+        <button class="btn btn-gold" id="nextBtn" disabled>Next <span class="btn-arrow">→</span></button>
+      </div>
+      <p class="reassure">Your answers are saved as you go.</p>
+    </div>
+
+    <!-- Loading after completion -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Calculating your results…</p>
+    </div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+  // ---- Option B guard: must have lead data ----
+  var lead = null;
+  try { lead = JSON.parse(sessionStorage.getItem('airg_lead') || 'null'); } catch(e){ lead = null; }
+  if (!lead || !lead.email){
+    try { sessionStorage.setItem('airg_notice','Please enter your details first to start the assessment.'); } catch(e){}
+    window.location.replace('index.html#start');
+  }
+
+  // ---- Webhook URL comes from config.js (edit it there, once). ----
+  var WEBHOOK_URL = (window.AIRG_CONFIG && window.AIRG_CONFIG.WEBHOOK_URL) || "";
+
+  // ---- Questions. points 0–3 per option. ----
+  var QUESTIONS = [
+    { q:"How much of your team's daily work is still done manually (paperwork, copy-paste, repetitive tasks)?",
+      opts:[["Almost everything",0],["A lot",1],["Some",2],["Very little — mostly automated",3]] },
+    { q:"Do you currently use software to manage customers, sales, or operations (CRM, ERP, accounting)?",
+      opts:[["No, mostly spreadsheets or paper",0],["One or two basic tools",1],["Several tools",2],["Fully integrated systems",3]] },
+    { q:"How is your business data stored today?",
+      opts:[["On paper or in people's heads",0],["Scattered files and spreadsheets",1],["Mostly digital, somewhat organised",2],["Centralised and well organised",3]] },
+    { q:"Has your team tried any AI tools (ChatGPT, automation, chatbots) for work?",
+      opts:[["Never",0],["A few people experimenting",1],["We use them informally",2],["We use them in real workflows",3]] },
+    { q:"What is your biggest business bottleneck right now?",
+      opts:[["Too much manual / admin work",3],["Slow customer response",3],["Hard to find or keep good staff",2],["We're efficient — we want an edge",1]] },
+    { q:"How quickly does your business respond to customer enquiries?",
+      opts:[["Hours or next day",0],["Within a couple of hours",1],["Within minutes, in business hours",2],["Instantly, including after hours",3]] },
+    { q:"Do you have someone responsible for technology or digital improvement?",
+      opts:[["No one",0],["An outside vendor handles it",1],["Someone part-time / informal",2],["A dedicated person or team",3]] },
+    { q:"How open is your leadership to adopting new technology?",
+      opts:[["Very cautious",0],["Open but slow",1],["Open and willing to invest",2],["Actively pushing for it",3]] },
+    { q:"If AI could save your team 10+ hours a week, how soon would you want to act?",
+      opts:[["Just exploring for now",0],["In the next 6 months",1],["In the next 3 months",2],["As soon as possible",3]] }
+  ];
+  var TOTAL = QUESTIONS.length;
+
+  // ---- State (restore in-progress answers if present) ----
+  var answers = Array.isArray(lead && lead.answers) ? lead.answers.slice() : [];
+  var current = 0;
+  // resume at first unanswered question
+  while (current < TOTAL && answers[current] && typeof answers[current].points === 'number') current++;
+  if (current >= TOTAL) current = TOTAL - 1;
+
+  var qArea   = document.getElementById('qArea');
+  var qText   = document.getElementById('qText');
+  var optionsEl = document.getElementById('options');
+  var stepLabel = document.getElementById('stepLabel');
+  var pctEl   = document.getElementById('pct');
+  var barFill = document.getElementById('barFill');
+  var backBtn = document.getElementById('backBtn');
+  var nextBtn = document.getElementById('nextBtn');
+
+  function persist(){
+    lead.answers = answers;
+    try { sessionStorage.setItem('airg_lead', JSON.stringify(lead)); } catch(e){}
+  }
+
+  function render(){
+    var item = QUESTIONS[current];
+    qText.textContent = item.q;
+    optionsEl.innerHTML = '';
+    var chosen = answers[current];
+    item.opts.forEach(function(o, i){
+      var label = o[0], points = o[1];
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'opt' + (chosen && chosen.index === i ? ' selected' : '');
+      btn.innerHTML = '<span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0A1F3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>' + label + '</span>';
+      btn.addEventListener('click', function(){
+        answers[current] = { q: current+1, question: item.q, answer: label, index: i, points: points };
+        persist();
+        Array.prototype.forEach.call(optionsEl.children, function(c){ c.classList.remove('selected'); });
+        btn.classList.add('selected');
+        nextBtn.disabled = false;
+      });
+      optionsEl.appendChild(btn);
+    });
+
+    stepLabel.textContent = 'Question ' + (current+1) + ' of ' + TOTAL;
+    var pct = Math.round(((current) / TOTAL) * 100);
+    pctEl.textContent = Math.max(pct, Math.round(((current+ (answers[current]?1:0))/TOTAL)*100)) + '%';
+    barFill.style.width = Math.round(((current+1)/TOTAL)*100) + '%';
+
+    backBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+    nextBtn.disabled = !(answers[current] && typeof answers[current].points === 'number');
+    nextBtn.innerHTML = (current === TOTAL-1)
+      ? 'See My Results <span class="btn-arrow">→</span>'
+      : 'Next <span class="btn-arrow">→</span>';
+  }
+
+  function transitionTo(fn){
+    qArea.classList.remove('show');
+    qArea.classList.add('fade');
+    setTimeout(function(){
+      fn();
+      render();
+      qArea.classList.remove('fade');
+      qArea.classList.add('show');
+    }, 200);
+  }
+
+  nextBtn.addEventListener('click', function(){
+    if (nextBtn.disabled) return;
+    if (current < TOTAL-1){
+      transitionTo(function(){ current++; });
+    } else {
+      finish();
+    }
+  });
+  backBtn.addEventListener('click', function(){
+    if (current > 0) transitionTo(function(){ current--; });
+  });
+
+  // ---- Scoring + completion ----
+  function scoreOf(idx){ return (answers[idx] && answers[idx].points) || 0; }
+
+  function finish(){
+    var total = answers.reduce(function(s,a){ return s + (a && a.points || 0); }, 0);
+
+    var band, bandKey;
+    if (total <= 9){ band = 'AI Curious'; bandKey = 'curious'; }
+    else if (total <= 18){ band = 'AI Ready'; bandKey = 'ready'; }
+    else { band = 'AI Advanced'; bandKey = 'advanced'; }
+
+    // Temperature: hot if urgency(Q9)=3 OR bottleneck(Q5)=3 OR leadership(Q8)=3
+    var temperature;
+    if (scoreOf(8) === 3 || scoreOf(4) === 3 || scoreOf(7) === 3) temperature = 'hot';
+    else if (total >= 10) temperature = 'warm';
+    else temperature = 'nurture';
+
+    if (!lead.leadId){ lead.leadId = 'lead-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,10); }
+    lead.stage = 'completed';
+    lead.answers = answers;
+    lead.answersText = JSON.stringify(answers); // flat string for easy Airtable mapping
+    lead.score = total;
+    lead.scoreMax = TOTAL * 3;
+    lead.band = band;
+    lead.bandKey = bandKey;
+    lead.temperature = temperature;
+    lead.completedAt = new Date().toISOString();
+    try { sessionStorage.setItem('airg_lead', JSON.stringify(lead)); } catch(e){}
+
+    // Show loading
+    document.getElementById('quiz').style.display = 'none';
+    document.getElementById('loading').classList.add('on');
+
+    // Single write to backend (only once, only if configured). Don't block the funnel.
+    var go = function(){ window.location.href = 'result.html'; };
+    if (WEBHOOK_URL){
+      var done = false;
+      var proceed = function(){ if(!done){ done = true; go(); } };
+      try {
+        fetch(WEBHOOK_URL, {
+          method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(lead)
+        }).then(proceed).catch(proceed);
+      } catch(e){ proceed(); }
+      setTimeout(proceed, 2500); // safety: never get stuck on a slow network
+    } else {
+      setTimeout(go, 700);
+    }
+  }
+
+  render();
+</script>
+</body>
+</html>
