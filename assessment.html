@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var l=localStorage.getItem('airg_lang');if(!l)l=(navigator.language||'').toLowerCase().indexOf('ar')===0?'ar':'en';document.documentElement.lang=l;document.documentElement.dir=(l==='ar')?'rtl':'ltr';if(l==='ar')document.documentElement.className+=' i18n-hide';}catch(e){}})();</script>
+<style>html.i18n-hide body{visibility:hidden}</style>
 <title>Business Efficiency Assessment — AI Ready GCC</title>
 <meta name="description" content="Answer 9 quick questions and discover where AI can save your business time and money.">
 <meta name="robots" content="noindex">
@@ -26,7 +28,7 @@
   }
 
   /* Header */
-  header.site{padding:20px 0}
+  header.site{padding:20px 0;position:relative}
   .nav{display:flex;align-items:center;justify-content:center;max-width:760px;margin:0 auto;padding:0 22px}
   .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:18px;color:#fff;letter-spacing:-.2px}
   .brand .mark{width:34px;height:34px;flex:0 0 34px}
@@ -89,6 +91,16 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .loading p{color:var(--muted);font-size:15px}
 
+  /* Language switcher */
+  .lang-switch{position:absolute;top:20px;inset-inline-end:18px;display:inline-flex;align-items:center;padding:6px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.10);color:#fff;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer}
+  .lang-switch:hover{background:rgba(255,255,255,.2)}
+
+  /* RTL (Arabic) */
+  [dir="rtl"] body{font-family:'Tajawal','Plus Jakarta Sans',sans-serif}
+  [dir="rtl"] *{letter-spacing:0 !important}
+  [dir="rtl"] .opt{text-align:right}
+  [dir="rtl"] .btn-arrow{display:inline-block;transform:scaleX(-1)}
+
   @media (max-width:520px){
     .card{padding:24px 20px 22px;border-radius:16px}
     .q-area{min-height:300px}
@@ -110,6 +122,7 @@
       <span>AI Ready GCC</span>
     </a>
   </div>
+  <button type="button" class="lang-switch" data-lang-switch aria-label="Switch language">العربية</button>
 </header>
 
 <div class="stage">
@@ -131,26 +144,31 @@
         <button class="btn btn-ghost" id="backBtn">← Back</button>
         <button class="btn btn-gold" id="nextBtn" disabled>Next <span class="btn-arrow">→</span></button>
       </div>
-      <p class="reassure">Your answers are saved as you go.</p>
+      <p class="reassure" data-i18n="assessment.reassure">Your answers are saved as you go.</p>
     </div>
 
     <!-- Loading after completion -->
     <div class="loading" id="loading">
       <div class="spinner"></div>
-      <p>Calculating your results…</p>
+      <p data-i18n="assessment.loading">Calculating your results…</p>
     </div>
   </div>
 </div>
 
 <script src="config.js"></script>
+<script src="i18n.js"></script>
 <script>
   // ---- Option B guard: must have lead data ----
   var lead = null;
   try { lead = JSON.parse(sessionStorage.getItem('airg_lead') || 'null'); } catch(e){ lead = null; }
   if (!lead || !lead.email){
-    try { sessionStorage.setItem('airg_notice','Please enter your details first to start the assessment.'); } catch(e){}
+    try { sessionStorage.setItem('airg_notice','need_details'); } catch(e){}
     window.location.replace('index.html#start');
   }
+
+  // ---- i18n helpers (display text only; stored values stay English) ----
+  function L(key, fb){ var v = window.AIRG_I18N && window.AIRG_I18N.t(key); return (typeof v === 'string') ? v : fb; }
+  function LArr(key){ var v = window.AIRG_I18N && window.AIRG_I18N.t(key); return Array.isArray(v) ? v : null; }
 
   // ---- Webhook URL comes from config.js (edit it there, once). ----
   var WEBHOOK_URL = (window.AIRG_CONFIG && window.AIRG_CONFIG.WEBHOOK_URL) || "";
@@ -201,17 +219,22 @@
 
   function render(){
     var item = QUESTIONS[current];
-    qText.textContent = item.q;
+    var qkey = 'assessment.q' + (current+1);
+    qText.textContent = L(qkey + '.text', item.q);
+    var optLabels = LArr(qkey + '.opts');
     optionsEl.innerHTML = '';
     var chosen = answers[current];
     item.opts.forEach(function(o, i){
-      var label = o[0], points = o[1];
+      var enLabel = o[0], points = o[1];
+      var disp = (optLabels && typeof optLabels[i] === 'string') ? optLabels[i] : enLabel;
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'opt' + (chosen && chosen.index === i ? ' selected' : '');
-      btn.innerHTML = '<span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0A1F3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>' + label + '</span>';
+      btn.innerHTML = '<span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0A1F3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="opt-label"></span>';
+      btn.querySelector('.opt-label').textContent = disp;
       btn.addEventListener('click', function(){
-        answers[current] = { q: current+1, question: item.q, answer: label, index: i, points: points };
+        // Store ENGLISH question + label so the saved/sent payload is identical in any language.
+        answers[current] = { q: current+1, question: item.q, answer: enLabel, index: i, points: points };
         persist();
         Array.prototype.forEach.call(optionsEl.children, function(c){ c.classList.remove('selected'); });
         btn.classList.add('selected');
@@ -220,16 +243,18 @@
       optionsEl.appendChild(btn);
     });
 
-    stepLabel.textContent = 'Question ' + (current+1) + ' of ' + TOTAL;
+    var tpl = L('assessment.progress', 'Question {n} of {total}');
+    stepLabel.textContent = tpl.replace('{n}', current+1).replace('{total}', TOTAL);
     var pct = Math.round(((current) / TOTAL) * 100);
     pctEl.textContent = Math.max(pct, Math.round(((current+ (answers[current]?1:0))/TOTAL)*100)) + '%';
     barFill.style.width = Math.round(((current+1)/TOTAL)*100) + '%';
 
     backBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+    backBtn.innerHTML = '<span class="btn-arrow">←</span> ' + L('assessment.back', 'Back');
     nextBtn.disabled = !(answers[current] && typeof answers[current].points === 'number');
     nextBtn.innerHTML = (current === TOTAL-1)
-      ? 'See My Results <span class="btn-arrow">→</span>'
-      : 'Next <span class="btn-arrow">→</span>';
+      ? (L('assessment.see_results','See My Results') + ' <span class="btn-arrow">→</span>')
+      : (L('assessment.next','Next') + ' <span class="btn-arrow">→</span>');
   }
 
   function transitionTo(fn){
@@ -305,6 +330,8 @@
   }
 
   render();
+  // Re-render current question when language loads or is switched (keeps progress).
+  if (window.AIRG_I18N && window.AIRG_I18N.ready) window.AIRG_I18N.ready(function(){ render(); });
 </script>
 </body>
 </html>

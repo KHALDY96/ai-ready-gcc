@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var l=localStorage.getItem('airg_lang');if(!l)l=(navigator.language||'').toLowerCase().indexOf('ar')===0?'ar':'en';document.documentElement.lang=l;document.documentElement.dir=(l==='ar')?'rtl':'ltr';if(l==='ar')document.documentElement.className+=' i18n-hide';}catch(e){}})();</script>
+<style>html.i18n-hide body{visibility:hidden}</style>
 <title>AI Ready GCC — Find Out How Much Time AI Could Save Your Business</title>
 <meta name="description" content="Take the free 2-minute AI Readiness Assessment for GCC business owners. Discover where AI can reduce manual work, speed up customer response, and increase efficiency.">
 
@@ -209,6 +211,16 @@
   .notice{display:none;background:#fff7e6;border:1px solid #e9d39a;color:#7a5c12;font-size:14px;font-weight:600;padding:12px 14px;border-radius:10px;margin-bottom:18px}
   .notice.on{display:block}
 
+  /* Language switcher */
+  .lang-switch{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--navy);font-family:inherit;font-weight:600;font-size:13px;cursor:pointer;transition:background .15s ease,border-color .15s ease}
+  .lang-switch:hover{border-color:var(--gold);background:#fffaf0}
+
+  /* RTL (Arabic) */
+  [dir="rtl"] body{font-family:'Tajawal','Plus Jakarta Sans',sans-serif}
+  [dir="rtl"] *{letter-spacing:0 !important}
+  [dir="rtl"] .value-stmt{border-left:0;border-right:3px solid var(--gold);border-radius:10px 0 0 10px}
+  [dir="rtl"] .btn-arrow{display:inline-block;transform:scaleX(-1)}
+
   /* ---------- Mobile ---------- */
   @media (max-width:860px){
     .hero .wrap{grid-template-columns:1fr;gap:36px;padding:54px 22px 60px}
@@ -242,7 +254,10 @@
       </svg>
       <span>AI Ready GCC</span>
     </a>
-    <a class="nav-cta" href="#start">Find My Opportunities</a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button type="button" class="lang-switch" data-lang-switch aria-label="Switch language">العربية</button>
+      <a class="nav-cta" href="#start" data-i18n="common.nav_cta">Find My Opportunities</a>
+    </div>
   </div>
 </header>
 
@@ -252,50 +267,50 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="eyebrow"><span class="dot"></span> Business Efficiency Assessment · Powered by AI</span>
-      <h1>Find Out How Much <span class="accent">Time AI</span> Could Save Your Business Every Week.</h1>
-      <p class="sub">Take the free 2-minute Business Efficiency Assessment built for GCC business owners and discover where AI can reduce manual work, speed up customer response, and free up your team's time.</p>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="landing.eyebrow"> Business Efficiency Assessment · Powered by AI</span></span>
+      <h1 data-i18n-html="landing.hero_headline">Find Out How Much <span class="accent">Time AI</span> Could Save Your Business Every Week.</h1>
+      <p class="sub" data-i18n="landing.hero_sub">Take the free 2-minute Business Efficiency Assessment built for GCC business owners and discover where AI can reduce manual work, speed up customer response, and free up your team's time.</p>
       <div class="cta-row">
-        <a class="btn btn-gold" href="#start">Find My Biggest AI Opportunities <span class="btn-arrow">→</span></a>
+        <a class="btn btn-gold" href="#start"><span data-i18n="common.cta_find">Find My Biggest AI Opportunities</span> <span class="btn-arrow">→</span></a>
       </div>
-      <p class="cta-micro">Free · 9 questions · about 2 minutes</p>
-      <p class="value-stmt">Most GCC businesses are sitting on <strong>5–15 hours</strong> of repetitive work every week that could be streamlined. The assessment shows you where yours are.</p>
+      <p class="cta-micro" data-i18n="landing.cta_micro">Free · 9 questions · about 2 minutes</p>
+      <p class="value-stmt" data-i18n-html="landing.value_stmt">Most GCC businesses are sitting on <strong>5–15 hours</strong> of repetitive work every week that could be streamlined. The assessment shows you where yours are.</p>
       <div class="trustline">
         <span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Bahrain · KSA · UAE & the GCC
+          <span data-i18n="landing.trust_region">Bahrain · KSA · UAE & the GCC</span>
         </span>
         <span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          100% free
+          <span data-i18n="landing.trust_free">100% free</span>
         </span>
         <span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Takes 2 minutes
+          <span data-i18n="landing.trust_2min">Takes 2 minutes</span>
         </span>
       </div>
     </div>
 
     <div class="hero-card" aria-hidden="true">
-      <h3>Your Business Efficiency Snapshot</h3>
-      <div class="big">See where you stand</div>
+      <h3 data-i18n="landing.snapshot_title">Your Business Efficiency Snapshot</h3>
+      <div class="big" data-i18n="landing.snapshot_sub">See where you stand</div>
       <div class="hc-row">
         <div class="hc-ico">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0A1F3C" stroke-width="2"/><path d="M12 7v5l3 2" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <div><strong>Hours saved per week</strong><small>Where AI takes work off your team</small></div>
+        <div><strong data-i18n="landing.snap1_t">Hours saved per week</strong><small data-i18n="landing.snap1_d">Where AI takes work off your team</small></div>
       </div>
       <div class="hc-row">
         <div class="hc-ico">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L4 21l1.1-4A8.5 8.5 0 1 1 21 11.5z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/></svg>
         </div>
-        <div><strong>Faster customer response</strong><small>Reply in seconds, even after hours</small></div>
+        <div><strong data-i18n="landing.snap2_t">Faster customer response</strong><small data-i18n="landing.snap2_d">Reply in seconds, even after hours</small></div>
       </div>
       <div class="hc-row">
         <div class="hc-ico">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 19V9m6 10V5m6 14v-7" stroke="#0A1F3C" stroke-width="2" stroke-linecap="round"/><path d="M16 5l0 0" stroke="#C2A24B" stroke-width="2"/></svg>
         </div>
-        <div><strong>Your score + next step</strong><small>A clear plan, no jargon</small></div>
+        <div><strong data-i18n="landing.snap3_t">Your score + next step</strong><small data-i18n="landing.snap3_d">A clear plan, no jargon</small></div>
       </div>
     </div>
   </div>
@@ -306,19 +321,19 @@
   <div class="wrap">
     <div class="trust-item">
       <span class="ti-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="#C2A24B" stroke-width="2"/></svg></span>
-      Built for GCC businesses
+      <span data-i18n="landing.ts_built">Built for GCC businesses</span>
     </div>
     <div class="trust-item">
       <span class="ti-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#0A1F3C" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#C2A24B" stroke-width="2"/></svg></span>
-      Your details stay private
+      <span data-i18n="landing.ts_private">Your details stay private</span>
     </div>
     <div class="trust-item">
       <span class="ti-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 15a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/><path d="M9 10h6M9 13h3" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></span>
-      Plain language, no jargon
+      <span data-i18n="landing.ts_plain">Plain language, no jargon</span>
     </div>
     <div class="trust-item">
       <span class="ti-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0A1F3C" stroke-width="2"/><path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#C2A24B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      Free &amp; no obligation
+      <span data-i18n="landing.ts_freeobl">Free &amp; no obligation</span>
     </div>
   </div>
 </section>
@@ -326,55 +341,55 @@
 <!-- ===== Common business bottlenecks ===== -->
 <section>
   <div class="wrap">
-    <div class="kicker">Does this sound familiar?</div>
-    <h2 class="sec">AI isn't complicated — and it isn't only for tech companies.</h2>
-    <p class="lead">For most GCC businesses, the biggest wins come from fixing everyday bottlenecks. If even one of these sounds familiar, the assessment will show you where AI can help most.</p>
+    <div class="kicker" data-i18n="landing.bn_kicker">Does this sound familiar?</div>
+    <h2 class="sec" data-i18n="landing.bn_h2">AI isn't complicated — and it isn't only for tech companies.</h2>
+    <p class="lead" data-i18n="landing.bn_lead">For most GCC businesses, the biggest wins come from fixing everyday bottlenecks. If even one of these sounds familiar, the assessment will show you where AI can help most.</p>
     <div class="bottlenecks">
       <div class="bl">
         <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L4 21l1.1-4A8.5 8.5 0 1 1 21 11.5z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/></svg></div>
-        <p>Slow customer response times</p>
+        <p data-i18n="landing.bn1">Slow customer response times</p>
       </div>
       <div class="bl">
         <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7 4h7l4 4v12H7z" stroke="#0A1F3C" stroke-width="2" stroke-linejoin="round"/><path d="M9 12h6M9 15h4" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <p>Repetitive administrative work</p>
+        <p data-i18n="landing.bn2">Repetitive administrative work</p>
       </div>
       <div class="bl">
         <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 19V9m5 10V5m5 14v-8m4 8V8" stroke="#0A1F3C" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <p>Manual reporting</p>
+        <p data-i18n="landing.bn3">Manual reporting</p>
       </div>
       <div class="bl">
         <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#0A1F3C" stroke-width="2"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <p>Operational inefficiencies</p>
+        <p data-i18n="landing.bn4">Operational inefficiencies</p>
       </div>
       <div class="bl">
         <div class="bl-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0A1F3C" stroke-width="2"/><path d="M12 7v5l3 2" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <p>Time-consuming internal processes</p>
+        <p data-i18n="landing.bn5">Time-consuming internal processes</p>
       </div>
     </div>
-    <div class="bl-cta"><a class="btn btn-gold" href="#start">Find My Biggest AI Opportunities <span class="btn-arrow">→</span></a></div>
+    <div class="bl-cta"><a class="btn btn-gold" href="#start"><span data-i18n="common.cta_find">Find My Biggest AI Opportunities</span> <span class="btn-arrow">→</span></a></div>
   </div>
 </section>
 
 <!-- ===== What you'll discover ===== -->
 <section class="section-soft">
   <div class="wrap">
-    <div class="kicker">What you'll discover</div>
-    <h2 class="sec">A clear picture of your biggest AI opportunities.</h2>
+    <div class="kicker" data-i18n="landing.dis_kicker">What you'll discover</div>
+    <h2 class="sec" data-i18n="landing.dis_h2">A clear picture of your biggest AI opportunities.</h2>
     <div class="cards">
       <div class="card">
         <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#C2A24B" stroke-width="2"/><path d="M12 7v5l3 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <h3>Hours saved every week</h3>
-        <p>See where AI can take repetitive, manual work off your team's plate.</p>
+        <h3 data-i18n="landing.dis_c1_t">Hours saved every week</h3>
+        <p data-i18n="landing.dis_c1_d">See where AI can take repetitive, manual work off your team's plate.</p>
       </div>
       <div class="card">
         <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L4 21l1.1-4A8.5 8.5 0 1 1 21 11.5z" stroke="#C2A24B" stroke-width="2" stroke-linejoin="round"/></svg></div>
-        <h3>Faster customer response</h3>
-        <p>Learn how to reply to customers in seconds — even outside business hours.</p>
+        <h3 data-i18n="landing.dis_c2_t">Faster customer response</h3>
+        <p data-i18n="landing.dis_c2_d">Learn how to reply to customers in seconds — even outside business hours.</p>
       </div>
       <div class="card">
         <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 19V9m6 10V5m6 14v-7" stroke="#C2A24B" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <h3>Your readiness score + next step</h3>
-        <p>A clear picture of where you stand today and what to do first.</p>
+        <h3 data-i18n="landing.dis_c3_t">Your readiness score + next step</h3>
+        <p data-i18n="landing.dis_c3_d">A clear picture of where you stand today and what to do first.</p>
       </div>
     </div>
   </div>
@@ -383,23 +398,23 @@
 <!-- ===== How it works ===== -->
 <section>
   <div class="wrap">
-    <div class="kicker">How it works</div>
-    <h2 class="sec">Three simple steps. About two minutes.</h2>
+    <div class="kicker" data-i18n="landing.how_kicker">How it works</div>
+    <h2 class="sec" data-i18n="landing.how_h2">Three simple steps. About two minutes.</h2>
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
-        <h3>Take the free assessment</h3>
-        <p>Answer 9 quick questions about how your business runs today.</p>
+        <h3 data-i18n="landing.how1_t">Take the free assessment</h3>
+        <p data-i18n="landing.how1_d">Answer 9 quick questions about how your business runs today.</p>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <h3>Get your results</h3>
-        <p>See where AI can save you time and money, with a readiness score.</p>
+        <h3 data-i18n="landing.how2_t">Get your results</h3>
+        <p data-i18n="landing.how2_d">See where AI can save you time and money, with a readiness score.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <h3>Book a free consultation</h3>
-        <p>Get a tailored action plan for your business — no obligation.</p>
+        <h3 data-i18n="landing.how3_t">Book a free consultation</h3>
+        <p data-i18n="landing.how3_d">Get a tailored action plan for your business — no obligation.</p>
       </div>
     </div>
   </div>
@@ -410,34 +425,34 @@
   <div class="wrap">
     <div class="form-grid">
       <div class="pitch">
-        <h2 class="sec" style="text-align:left">Start your free Business Efficiency Assessment</h2>
-        <p>Enter your details and see your results in two minutes. Built for owners and decision-makers — no technical background needed.</p>
+        <h2 class="sec" style="text-align:left" data-i18n="form.pitch_h2">Start your free Business Efficiency Assessment</h2>
+        <p data-i18n="form.pitch_p">Enter your details and see your results in two minutes. Built for owners and decision-makers — no technical background needed.</p>
         <ul class="checklist">
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 9 quick questions, about 2 minutes</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> A clear readiness score for your business</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> A free consultation with a tailored plan</li>
-          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 100% free — no software to install</li>
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> <span data-i18n="form.check1">9 quick questions, about 2 minutes</span></li>
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> <span data-i18n="form.check2">A clear readiness score for your business</span></li>
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> <span data-i18n="form.check3">A free consultation with a tailored plan</span></li>
+          <li><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#C2A24B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> <span data-i18n="form.check4">100% free — no software to install</span></li>
         </ul>
       </div>
 
       <div class="form-card">
         <div class="notice" id="notice" role="status"></div>
-        <h3>Get your results</h3>
-        <p class="fc-sub">Takes 2 minutes. Your details are kept private.</p>
+        <h3 data-i18n="form.fc_h3">Get your results</h3>
+        <p class="fc-sub" data-i18n="form.fc_sub">Takes 2 minutes. Your details are kept private.</p>
         <form id="leadForm" novalidate>
           <div class="field" id="f-name">
-            <label for="name">Full name</label>
-            <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Ahmed Al-Khalifa">
-            <div class="err">Please enter your name.</div>
+            <label for="name" data-i18n="form.l_name">Full name</label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Ahmed Al-Khalifa" data-i18n-attr="placeholder:form.ph_name">
+            <div class="err" data-i18n="form.err_name">Please enter your name.</div>
           </div>
           <div class="field" id="f-email">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com">
-            <div class="err">Please enter a valid email.</div>
+            <label for="email" data-i18n="form.l_email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com" dir="ltr">
+            <div class="err" data-i18n="form.err_email">Please enter a valid email.</div>
           </div>
           <div class="field" id="f-phone">
-            <label for="phone">Phone (WhatsApp)</label>
-            <div class="phone-row">
+            <label for="phone" data-i18n="form.l_phone">Phone (WhatsApp)</label>
+            <div class="phone-row" dir="ltr">
               <select id="countryCode" name="countryCode" aria-label="Country code">
                 <option value="+973" selected>🇧🇭 +973</option>
                 <option value="+966">🇸🇦 +966</option>
@@ -448,48 +463,48 @@
               </select>
               <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="3300 0000" inputmode="numeric">
             </div>
-            <div class="err">Please enter your phone number.</div>
-            <small class="hint">We'll only use this to share your results. No spam.</small>
+            <div class="err" data-i18n="form.err_phone">Please enter your phone number.</div>
+            <small class="hint" data-i18n="form.hint">We'll only use this to share your results. No spam.</small>
           </div>
           <div class="field" id="f-company">
-            <label for="company">Company name</label>
-            <input type="text" id="company" name="company" autocomplete="organization" placeholder="Your company">
-            <div class="err">Please enter your company name.</div>
+            <label for="company" data-i18n="form.l_company">Company name</label>
+            <input type="text" id="company" name="company" autocomplete="organization" placeholder="Your company" data-i18n-attr="placeholder:form.ph_company">
+            <div class="err" data-i18n="form.err_company">Please enter your company name.</div>
           </div>
           <div class="field" id="f-type">
-            <label for="businessType">Business type</label>
+            <label for="businessType" data-i18n="form.l_btype">Business type</label>
             <select id="businessType" name="businessType">
-              <option value="" selected disabled>Select your business type</option>
-              <option>Restaurant / Cafe</option>
-              <option>Retail</option>
-              <option>Real Estate</option>
-              <option>Healthcare</option>
-              <option>Professional Services</option>
-              <option>Manufacturing</option>
-              <option>Logistics</option>
-              <option>Education</option>
-              <option>Hospitality</option>
-              <option>Other</option>
+              <option value="" selected disabled data-i18n="form.bt_placeholder">Select your business type</option>
+              <option value="Restaurant / Cafe" data-i18n="form.bt_restaurant">Restaurant / Cafe</option>
+              <option value="Retail" data-i18n="form.bt_retail">Retail</option>
+              <option value="Real Estate" data-i18n="form.bt_realestate">Real Estate</option>
+              <option value="Healthcare" data-i18n="form.bt_healthcare">Healthcare</option>
+              <option value="Professional Services" data-i18n="form.bt_proservices">Professional Services</option>
+              <option value="Manufacturing" data-i18n="form.bt_manufacturing">Manufacturing</option>
+              <option value="Logistics" data-i18n="form.bt_logistics">Logistics</option>
+              <option value="Education" data-i18n="form.bt_education">Education</option>
+              <option value="Hospitality" data-i18n="form.bt_hospitality">Hospitality</option>
+              <option value="Other" data-i18n="form.bt_other">Other</option>
             </select>
-            <div class="err">Please select your business type.</div>
+            <div class="err" data-i18n="form.err_btype">Please select your business type.</div>
           </div>
           <div class="field" id="f-size">
-            <label for="companySize">Company size</label>
+            <label for="companySize" data-i18n="form.l_size">Company size</label>
             <select id="companySize" name="companySize">
-              <option value="" selected disabled>Number of employees</option>
-              <option>1–10</option>
-              <option>11–50</option>
-              <option>51–200</option>
-              <option>200+</option>
+              <option value="" selected disabled data-i18n="form.size_placeholder">Number of employees</option>
+              <option value="1–10" data-i18n="form.size_1">1–10</option>
+              <option value="11–50" data-i18n="form.size_2">11–50</option>
+              <option value="51–200" data-i18n="form.size_3">51–200</option>
+              <option value="200+" data-i18n="form.size_4">200+</option>
             </select>
-            <div class="err">Please select your company size.</div>
+            <div class="err" data-i18n="form.err_size">Please select your company size.</div>
           </div>
           <label class="consent" id="f-consent">
             <input type="checkbox" id="consent" name="consent">
-            <span>I agree to be contacted about AI for my business.</span>
+            <span data-i18n="form.consent">I agree to be contacted about AI for my business.</span>
           </label>
-          <button type="submit" class="btn btn-gold">Find My Biggest AI Opportunities <span class="btn-arrow">→</span></button>
-          <p class="form-note">Free · about 2 minutes · your details stay private.</p>
+          <button type="submit" class="btn btn-gold"><span data-i18n="common.cta_find">Find My Biggest AI Opportunities</span> <span class="btn-arrow">→</span></button>
+          <p class="form-note" data-i18n="form.note">Free · about 2 minutes · your details stay private.</p>
         </form>
       </div>
     </div>
@@ -499,13 +514,13 @@
 <!-- ===== Reassurance / FAQ ===== -->
 <section class="section-soft">
   <div class="wrap">
-    <div class="kicker">Before you start</div>
-    <h2 class="sec">Quick answers</h2>
+    <div class="kicker" data-i18n="faq.kicker">Before you start</div>
+    <h2 class="sec" data-i18n="faq.h2">Quick answers</h2>
     <div class="faq">
-      <div class="faq-item"><h3>Is it really free?</h3><p>Yes — both the assessment and the consultation are completely free, with no obligation.</p></div>
-      <div class="faq-item"><h3>How long does it take?</h3><p>About two minutes. It's 9 simple questions about how your business runs today.</p></div>
-      <div class="faq-item"><h3>Do I need technical knowledge?</h3><p>None at all. It's written for business owners and managers, not IT teams.</p></div>
-      <div class="faq-item"><h3>Is my information safe?</h3><p>Yes. Your details are kept private and used only to prepare and share your results.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq.q1">Is it really free?</h3><p data-i18n="faq.a1">Yes — both the assessment and the consultation are completely free, with no obligation.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq.q2">How long does it take?</h3><p data-i18n="faq.a2">About two minutes. It's 9 simple questions about how your business runs today.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq.q3">Do I need technical knowledge?</h3><p data-i18n="faq.a3">None at all. It's written for business owners and managers, not IT teams.</p></div>
+      <div class="faq-item"><h3 data-i18n="faq.q4">Is my information safe?</h3><p data-i18n="faq.a4">Yes. Your details are kept private and used only to prepare and share your results.</p></div>
     </div>
   </div>
 </section>
@@ -513,11 +528,11 @@
 <!-- ===== Closing CTA ===== -->
 <section class="closing">
   <div class="wrap">
-    <div class="kicker">Don't get left behind</div>
-    <h2 class="sec">Your competitors are already asking where AI can help.</h2>
-    <p>Find out first — it's free and takes two minutes.</p>
-    <a class="btn btn-gold" href="#start">Find My Biggest AI Opportunities <span class="btn-arrow">→</span></a>
-    <p class="form-note" style="margin-top:16px">Free · about 2 minutes · no obligation</p>
+    <div class="kicker" data-i18n="closing.kicker">Don't get left behind</div>
+    <h2 class="sec" data-i18n="closing.h2">Your competitors are already asking where AI can help.</h2>
+    <p data-i18n="closing.p">Find out first — it's free and takes two minutes.</p>
+    <a class="btn btn-gold" href="#start"><span data-i18n="common.cta_find">Find My Biggest AI Opportunities</span> <span class="btn-arrow">→</span></a>
+    <p class="form-note" style="margin-top:16px" data-i18n="closing.note">Free · about 2 minutes · no obligation</p>
   </div>
 </section>
 
@@ -526,23 +541,33 @@
   <div class="wrap">
     <span class="brand">AI Ready GCC</span>
     <div class="foot-links">
-      <a href="#start">Free Assessment</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="#start" data-i18n="common.foot_assessment">Free Assessment</a>
+      <a href="privacy.html" data-i18n="common.foot_privacy">Privacy</a>
     </div>
     <span>© <span id="yr"></span> AI Ready GCC</span>
   </div>
 </footer>
 
 <script src="config.js"></script>
+<script src="i18n.js"></script>
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // ===== Redirect notice (Option B: shown when sent back from assessment/result) =====
+  // ===== Redirect notice (Option B). Stored as a CODE so it can be translated. =====
+  var NOTICE_DEFAULTS = {
+    need_details: "Please enter your details first to start the assessment.",
+    complete_first: "Please complete the assessment to see your results."
+  };
   try {
-    var notice = sessionStorage.getItem('airg_notice');
-    if (notice){
+    var code = sessionStorage.getItem('airg_notice');
+    if (code){
       var n = document.getElementById('notice');
-      n.textContent = notice;
+      var showNotice = function(){
+        var t = (window.AIRG_I18N && window.AIRG_I18N.t('notices.' + code));
+        n.textContent = (typeof t === 'string' ? t : (NOTICE_DEFAULTS[code] || code));
+      };
+      showNotice();
+      if (window.AIRG_I18N && window.AIRG_I18N.ready) window.AIRG_I18N.ready(showNotice);
       n.classList.add('on');
       sessionStorage.removeItem('airg_notice');
     }
