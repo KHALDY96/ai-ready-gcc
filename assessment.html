@@ -300,7 +300,7 @@
     if (!lead.leadId){ lead.leadId = 'lead-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,10); }
     lead.stage = 'completed';
     lead.answers = answers;
-    lead.answersText = JSON.stringify(answers); // flat string for easy Airtable mapping
+    lead.answersText = JSON.stringify(answers); // flat string for one spreadsheet cell
     lead.score = total;
     lead.scoreMax = TOTAL * 3;
     lead.band = band;
@@ -320,7 +320,7 @@
       var proceed = function(){ if(!done){ done = true; go(); } };
       try {
         fetch(WEBHOOK_URL, {
-          method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(lead)
+          method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=UTF-8'}, body: JSON.stringify(lead)
         }).then(proceed).catch(proceed);
       } catch(e){ proceed(); }
       setTimeout(proceed, 2500); // safety: never get stuck on a slow network

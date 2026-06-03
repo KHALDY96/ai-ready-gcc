@@ -6,7 +6,8 @@
 
    WHAT GOES WHERE:
    - WEBHOOK_URL      Your Make.com custom webhook URL (used by the landing
-                      form AND the assessment — same URL for both).
+                      form AND the assessment — same URL for both). This
+                      sends leads into your Google Sheet via Make.
    - CALENDLY_URL     Your Calendly 30-min event link, e.g.
                       "https://calendly.com/your-name/30min"
    - WHATSAPP_NUMBER  Country code + number, digits only — no "+", no spaces.
@@ -18,7 +19,7 @@
    ===================================================================== */
 
 window.AIRG_CONFIG = {
-  WEBHOOK_URL:     "https://webhook.site/fb30375f-4452-48ec-a625-023688c4fa76",
+  WEBHOOK_URL:     "https://script.google.com/macros/s/AKfycbyZ2FN4MWf0OBUk5Mx1DLHBsrru3Ys34ssgM3Y3vQ0olLPtSG1JkwzBDQw_psZaHDHR/exec",
   CALENDLY_URL:    "https://calendly.com/yabdulla700/30min",
   WHATSAPP_NUMBER: "97333222670",
   CONTACT_EMAIL:   "support@lynqos.co"
